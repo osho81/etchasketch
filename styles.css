@@ -1,0 +1,36 @@
+body {
+    /* background-image: url("/uppg3pic.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;  */
+}
+
+section {
+
+}
+
+#board-container {
+    /* background-image: url("/uppg3pic.png"); */
+    background-image: url("/frame-pic.png");
+    background-repeat: no-repeat;
+    /* background-size: contain; */
+    background-size: auto 80%;
+    background-repeat: no-repeat;
+    background-attachment: fixed scroll;
+    background-position: center; 
+    background-color:rgb(54, 142, 83);
+    height: 800px;
+
+    display: flex; 
+	justify-content: center; /* center horizontally */ 
+	align-items: center; /* center vertically */
+}
+
+canvas {
+    background-color: white;
+    border-radius: 5%;
+    margin: -40px 0 0 -5px;
+    outline: 1px solid white;
+}
