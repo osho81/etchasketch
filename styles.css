@@ -12,7 +12,6 @@ section {
 }
 
 #board-container {
-    /* background-image: url("/uppg3pic.png"); */
     background-image: url("/frame-pic.png");
     background-repeat: no-repeat;
     /* background-size: contain; */
@@ -24,13 +23,13 @@ section {
     height: 800px;
 
     display: flex; 
-	justify-content: center; /* center horizontally */ 
-	align-items: center; /* center vertically */
+	justify-content: center; 
+	align-items: center;
 }
 
 canvas {
     background-color: white;
     border-radius: 5%;
     margin: -40px 0 0 -5px;
-    outline: 1px solid white;
+    /* box-shadow: 0px 0px 10px 0px blue; */
 }
