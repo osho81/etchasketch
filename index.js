@@ -1,32 +1,52 @@
 // Variables for the canvas to be used in the whole file
 var canvas = document.getElementById("canvas-area");
 var ctx = canvas.getContext("2d");
+
+// Round style for smoother line corners
+ctx.lineJoin = 'round';
+ctx.lineCap = 'round';
+
 const width = canvas.width; // Optional renaming
 const height = canvas.height;
 
-// Listen keys pressed within the whole open window
-document.addEventListener('keydown', handleKeyDown);
-// document.onkeydown = handleKeyDown;
+// Listen to keys down
+document.addEventListener('keydown', handleKeyDown); // Keys to draw line
+document.addEventListener('keydown', handleClearKeys); // Keys to clear canvas
+document.addEventListener('keydown', handleStyleKeys); // Keys to change color & styles
 
-document.addEventListener('runOnKeys', handleKeyDown);
+// Starting position/coordinates, but keep some padding for start position
+let xPos = Math.floor(Math.random() * width - 10) + 11;
+let yPos = Math.floor(Math.random() * height - 10) + 11;
 
+// Temporary styling to make a visibile bigger dot at start, for few seconds
+ctx.lineWidth = 15;
+ctx.strokeStyle = "#FF0000";
+ctx.moveTo(xPos, yPos);
+ctx.lineTo(xPos, yPos);
+ctx.stroke();
 
-// Starting positions
-let xPos = Math.floor(Math.random() * width) + 1;
-let yPos = Math.floor(Math.random() * height) + 1;
+// Delete the temporary starting dot, and return to default (black 1 px)
+setTimeout(function () { 
+    ctx.clearRect(0, 0, width, height);
+    ctx.beginPath(); 
+    ctx.moveTo(xPos, yPos); 
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "#000000";
+}, 500);
 
-ctx.moveTo(xPos, yPos); // Start at x & y coordinates
-
-let multipleKeysPressed = new Set(); // Set of multiple unique keys
+// Set to use as storage for multiple unique keys
+let multipleKeysPressed = new Set(); 
 
 /* Function to: 
  * determine number of (arrow) keys down,
- * defines number of incremeneted/decremented pixel-steps, 
+ * defines direction for line draw
+ * set number of incremeneted/decremented pixel-steps, 
+ * limit line to stay within canvas area
  * draw the defined line */
 function handleKeyDown(e) {
     e.preventDefault(); // Disaböe arrow-scroll
 
-    // Only if keydown is arros key(s), store key(s) to the set
+    // Only if keydown is arrow key(s), store key(s) to the set
     if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
         multipleKeysPressed.add(e.key);
     }
@@ -36,7 +56,7 @@ function handleKeyDown(e) {
 
         if (multipleKeysPressed.has('ArrowUp') && multipleKeysPressed.has('ArrowLeft')) {
             // Increase pixel-steps accordingly; but limit to canvas width/height
-            yPos > 0 && xPos > 0 ? yPos -= 1 : yPos = yPos; 
+            yPos > 0 && xPos > 0 ? yPos -= 1 : yPos = yPos;
             yPos > 0 && xPos > 0 ? xPos -= 1 : xPos = xPos;
         }
         if (multipleKeysPressed.has('ArrowUp') && multipleKeysPressed.has('ArrowRight')) {
@@ -76,6 +96,63 @@ function handleKeyDown(e) {
         multipleKeysPressed.delete(e.code); // code identifies exact key
     });
 
+}
+
+// If space or c is pressed, clear the canvas area 
+function handleClearKeys(e) {
+    e.preventDefault();
+
+    if (e.key === " " || e.key === "c") { // " "is key for spacekey
+
+        // Clear a rectangle corresponding to the canvas area
+        ctx.clearRect(0, 0, width, height);
+        ctx.beginPath(); // Needed to clear previous lines
+        ctx.moveTo(xPos, yPos); // Use latest position
+    }
+}
+
+// Change line style during drawing; r = red etc.; 4 = 4 px line etc.
+function handleStyleKeys(e) {
+    e.preventDefault();
+
+    // Line color:
+    if (e.key === "r") {
+        ctx.beginPath();
+        ctx.moveTo(xPos, yPos);
+        ctx.strokeStyle = "#FF0000";
+    }
+    if (e.key === "b") {
+        ctx.beginPath();
+        ctx.moveTo(xPos, yPos);
+        ctx.strokeStyle = "#0000FF";
+    }
+    if (e.key === "g") {
+        ctx.beginPath();
+        ctx.moveTo(xPos, yPos);
+        ctx.strokeStyle = "#00FF00";
+    }
+    if (e.key === "d") {
+        ctx.beginPath();
+        ctx.moveTo(xPos, yPos);
+        ctx.strokeStyle = "#000000";
+    }
+
+    // Line thickness:
+    if (e.key === "4") {
+        ctx.beginPath();
+        ctx.moveTo(xPos, yPos);
+        ctx.lineWidth = 4;
+    }
+    if (e.key === "8") {
+        ctx.beginPath();
+        ctx.moveTo(xPos, yPos);
+        ctx.lineWidth = 8;
+    }
+    if (e.key === "1") {
+        ctx.beginPath();
+        ctx.moveTo(xPos, yPos);
+        ctx.lineWidth = 1; // Back to default
+    }
 }
 
 // Solution from stackoverflow for null type error when get unloaded element by id
