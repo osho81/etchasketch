@@ -11,10 +11,11 @@ document.addEventListener('keydown', handleKeyDown);
 document.addEventListener('runOnKeys', handleKeyDown);
 
 
-// Variables for setting and controlling the draw pixel-steps
-let xPos = 100;
-let yPos = 100;
-ctx.moveTo(xPos, yPos);
+// Starting positions
+let xPos = Math.floor(Math.random() * width) + 1;
+let yPos = Math.floor(Math.random() * height) + 1;
+
+ctx.moveTo(xPos, yPos); // Start at x & y coordinates
 
 let multipleKeysPressed = new Set(); // Set of multiple unique keys
 
@@ -25,13 +26,17 @@ let multipleKeysPressed = new Set(); // Set of multiple unique keys
 function handleKeyDown(e) {
     e.preventDefault(); // Disaböe arrow-scroll
 
-    multipleKeysPressed.add(e.key); // Store key to the set
+    // Only if keydown is arros key(s), store key(s) to the set
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        multipleKeysPressed.add(e.key);
+    }
 
     // If multiple keys are down
     if (multipleKeysPressed.size > 1) {
 
         if (multipleKeysPressed.has('ArrowUp') && multipleKeysPressed.has('ArrowLeft')) {
-            yPos > 0 && xPos > 0 ? yPos -= 1 : yPos = yPos;
+            // Increase pixel-steps accordingly; but limit to canvas width/height
+            yPos > 0 && xPos > 0 ? yPos -= 1 : yPos = yPos; 
             yPos > 0 && xPos > 0 ? xPos -= 1 : xPos = xPos;
         }
         if (multipleKeysPressed.has('ArrowUp') && multipleKeysPressed.has('ArrowRight')) {
@@ -47,10 +52,8 @@ function handleKeyDown(e) {
             yPos < height && xPos < width ? xPos += 1 : xPos = xPos;
         }
 
-    // If not two keys are down, i.e. only one key is down:
-    } else {
+    } else { // If not two keys are down simultaneous, i.e. only one key is down:
         switch (e.key) {
-            // For each arrow-key-case, also keep line-drawings inside canvas
             case 'ArrowUp': yPos > 0 ? yPos -= 1 : yPos = yPos;
                 break;
             case 'ArrowDown': yPos < height ? yPos += 1 : yPos = yPos;
@@ -70,7 +73,7 @@ function handleKeyDown(e) {
 
     // Remove keys from key-list, otherwise first if-statement is always true
     document.addEventListener('keyup', function (e) {
-        multipleKeysPressed.delete(e.code);
+        multipleKeysPressed.delete(e.code); // code identifies exact key
     });
 
 }
