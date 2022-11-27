@@ -1,4 +1,5 @@
 body {
+    background-color: rgb(213, 10, 29);
     /* display: block;
     justify-content: center;
     align-items: center; */
@@ -12,7 +13,8 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed scroll;
     background-position: center;
-    background-color: white;
+    /* background-color: white; */
+    background-color: rgb(213, 10, 29);
     height: 800px;
     display: flex;
     justify-content: center;
@@ -50,7 +52,7 @@ span {
 }
 
 #instruction-btn {
-    background-color: rgb(194, 194, 194);
+    background-color: rgb(229, 61, 77);
     border: 2px solid rgb(50, 50, 50);
     border-radius: 5px;
     cursor: pointer;
@@ -76,12 +78,13 @@ span {
     overflow-x: hidden;
     transition: 0.5s;
     text-align: enter;
-    background-color: rgb(255, 174, 174);
+    background-color: rgb(229, 61, 77);
+    border: 2px solid rgb(50, 50, 50);
     font-family: Helvetica, sans-serif;
 }
 
 .closing-panel-x {
-    color: white;
+    color: rgb(143, 133, 133);
     font-weight: 900;
     float: right;
     font-size: 48px;
