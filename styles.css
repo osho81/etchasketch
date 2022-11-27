@@ -1,9 +1,5 @@
 body {
     background-color: rgb(213, 10, 29);
-    /* display: block;
-    justify-content: center;
-    align-items: center; */
-
 }
 
 #outer-container {
@@ -13,7 +9,6 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed scroll;
     background-position: center;
-    /* background-color: white; */
     background-color: rgb(213, 10, 29);
     height: 800px;
     display: flex;
@@ -27,11 +22,8 @@ body {
 
 #canvas-area {
     background-color: white;
-    /* background-color: yellow; */
     border-radius: 5%;
-    /* margin: 35px 0 0 -10px; */
     margin: 120px 0 0 -10px;
-    /* box-shadow: 0px 0px 10px 0px blue; */
 }
 
 span {
@@ -91,3 +83,9 @@ span {
     line-height: 24px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 800px) {
+    div.example {
+      display: none;
+    }
+  }

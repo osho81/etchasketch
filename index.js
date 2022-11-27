@@ -75,7 +75,6 @@ function handleKeyDown(e) {
 
 }
 
-
 // Solution from stackoverflow for null type error when get unloaded element by id
 function waitForLoad(id, callback) {
     var timer = setInterval(function () {
