@@ -43,8 +43,8 @@ function handleKeyDown(e) {
             yPos < height && xPos > 0 ? xPos -= 1 : xPos = xPos;
         }
         if (multipleKeysPressed.has('ArrowDown') && multipleKeysPressed.has('ArrowRight')) {
-            yPos < width && xPos < width ? yPos += 1 : yPos = yPos;
-            yPos < width && xPos < width ? xPos += 1 : xPos = xPos;
+            yPos < height && xPos < width ? yPos += 1 : yPos = yPos;
+            yPos < height && xPos < width ? xPos += 1 : xPos = xPos;
         }
 
     // If not two keys are down, i.e. only one key is down:
@@ -62,7 +62,6 @@ function handleKeyDown(e) {
             default:
                 break;
         }
-
     }
 
     // Execute the defined move above
