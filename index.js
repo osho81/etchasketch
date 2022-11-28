@@ -15,8 +15,8 @@ document.addEventListener('keydown', handleClearKeys); // Keys to clear canvas
 document.addEventListener('keydown', handleStyleKeys); // Keys to change color & styles
 
 // Starting position/coordinates, but keep some padding for start position
-let xPos = Math.floor(Math.random() * width - 10) + 11;
-let yPos = Math.floor(Math.random() * height - 10) + 11;
+let xPos = Math.floor(Math.random() * (width - 41)) + 21; // xPos between 20 & (width-20)
+let yPos = Math.floor(Math.random() * (height - 41)) + 21; // yPos between 20 & (height-20)
 
 // Temporary styling to make a visibile bigger dot at start, for few seconds
 ctx.lineWidth = 15;
@@ -26,16 +26,16 @@ ctx.lineTo(xPos, yPos);
 ctx.stroke();
 
 // Delete the temporary starting dot, and return to default (black 1 px)
-setTimeout(function () { 
+setTimeout(function () {
     ctx.clearRect(0, 0, width, height);
-    ctx.beginPath(); 
-    ctx.moveTo(xPos, yPos); 
+    ctx.beginPath();
+    ctx.moveTo(xPos, yPos);
     ctx.lineWidth = 1;
     ctx.strokeStyle = "#000000";
 }, 500);
 
 // Set to use as storage for multiple unique keys
-let multipleKeysPressed = new Set(); 
+let multipleKeysPressed = new Set();
 
 /* Function to: 
  * determine number of (arrow) keys down,
