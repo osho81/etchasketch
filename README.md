@@ -4,7 +4,7 @@
 Etch a Sketch program. For history of this toy, see https://en.wikipedia.org/wiki/Etch_A_Sketch 
 
 ### Screenshot from the program 
-<img src="https://github.com/osho81/htmlcss-styleguide/blob/master/images/pic-of-styleguide.png" alt="Pic from the game" width="800"/>
+<img src="https://github.com/osho81/etchasketch/blob/master/images/pic-of-etchasketch.png" alt="Pic of the toy game" width="800"/>
 
 
 #### Purpose & Motivation

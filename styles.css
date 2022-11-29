@@ -3,7 +3,7 @@ body {
 }
 
 #outer-container {
-    background-image: url("/frame-pic.png");
+    background-image: url("images/frame-pic.png");
     background-repeat: no-repeat;
     background-size: auto 80%;
     background-repeat: no-repeat;
