@@ -155,29 +155,16 @@ function handleStyleKeys(e) {
     }
 }
 
-// Solution from stackoverflow for null type error when get unloaded element by id
-function waitForLoad(id, callback) {
-    var timer = setInterval(function () {
-        if (document.getElementById(id)) {
-            clearInterval(timer);
-            callback();
-        }
-    }, 100);
+// Functions for opening and closing instructions panel
+document.getElementById("instruction-btn").onclick = function () {
+    document.getElementById("instruction-panel").style.height = "30vw";
+    document.getElementById("instruction-panel").style.width = "40vw";
+    document.getElementById("instruction-panel").style.padding = "20px";
 }
 
-// Function for opening and closing instructions panel
-waitForLoad("instruction-btn", function () {
-    document.getElementById("instruction-btn").onclick = function () {
-        document.getElementById("instruction-panel").style.height = "30vw";
-        document.getElementById("instruction-panel").style.width = "40vw";
-        document.getElementById("instruction-panel").style.padding = "20px";
-    }
-});
+document.getElementById("closing-x").onclick = function () {
+    document.getElementById("instruction-panel").style.height = "0";
+    document.getElementById("instruction-panel").style.width = "0";
+    document.getElementById("instruction-panel").style.padding = "0";
+}
 
-waitForLoad("closing-x", function () {
-    document.getElementById("closing-x").onclick = function () {
-        document.getElementById("instruction-panel").style.height = "0";
-        document.getElementById("instruction-panel").style.width = "0";
-        document.getElementById("instruction-panel").style.padding = "0";
-    }
-});
