@@ -21,4 +21,4 @@ Main purpose is to imporove html/css skills as well as Javascript fucntions.
 - Github pages for publishing of website
 
 ##### Visit published webpage:
-ADD LINK WHEN PUBLISHED
+https://osho81.github.io/etchasketch/ 
